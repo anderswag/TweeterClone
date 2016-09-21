@@ -33,3 +33,80 @@ body {
   background-color:white;
   padding-top:140px;
 }
+
+/*TWEETER CARD */
+
+.tweet-container{
+  width: 86%;
+  height: 200px;
+  background-color: #f3f3f3;
+  margin: 10px auto 10px auto;
+  border-radius: 7px;
+  border: solid 1px #bfb6b6;
+  font-family:'Roboto Condensed', sans-serif;
+  overflow: hidden;
+}
+.tweet-container header {
+  width:100%;
+  height:70px;
+  /*background-color:orange;*/
+  background-color:#ccefff;
+}
+.tweet-container header img {
+  height:60px;
+  width:60px;
+  background-color:white;
+  border-radius: 6px;
+  margin-top:5px;
+  margin-left:5px;
+  float:left;
+}
+.tweet-container header a {
+  color: #647e84;
+  font-size: 22px;
+  font-weight: 700;
+  float:left;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.tweet-container header p {
+  float:right;
+  font-size:14px;
+  margin: 10px;
+  color: rgba(0, 0, 0, 0.36);
+}
+.tweet-container .tweet-body {
+  width:100%;
+  background-color: #ffffff;
+  height:47%;
+  font-size:15px;
+  padding:25px 10px 25px 10px;
+}
+.tweet-container footer{
+  background-color:#ffffff;
+  height:20%;
+  border-top:1px solid #bfb6b6;
+  padding:0;
+}
+.tweet-container .timestamp {
+  font-size:12px;
+  width:75%;
+  float:left;
+  height:100%;
+  padding:10px 0px 0px 10px;
+}
+.tweet-container .social-buttons {
+  width:25%;
+  float:right;
+  height:100%;
+  color:#0de0bf;
+  padding-left:15px;
+  visibility:hidden;
+}
+.tweet-container .social-buttons i {
+  display: inline-block;
+  margin: 8px 3px 0px 3px;
+}
+.tweet-container:hover .social-buttons {
+  visibility:visible;
+}

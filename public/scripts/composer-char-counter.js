@@ -1,14 +1,15 @@
 $(document).ready(function(){
 
   function characterCount(){
-    var counterElement = $(this).siblings('.counter');
     var count = $(this).val().length;
+    var counterElement = $(this).siblings('.counter').html(140 - count);
     if(count > 140) {
-      var overCount = 140 - count;
-      $(counterElement).html(overCount).css("color","red");
+      $(counterElement).addClass("over-limit");
+    } else {
+      $(counterElement).removeClass("over-limit");
     }
-      $(counterElement).html(140 - count).css("color","black");
   }
-
-  $(".input-tweet").keyup(characterCount);
+  //Listens to input of tweet
+  $(".input-tweet").on("input", characterCount);
 });
+
