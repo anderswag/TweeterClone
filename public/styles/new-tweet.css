@@ -1,6 +1,6 @@
-.container .new-tweet {
-  display: block;
-  background-color: #eee;
+.new-tweet {
+  display: none;
+  background-color: white;
   border-radius: 7px;
   margin-left: 2em;
   margin-right: 2em;
@@ -26,6 +26,8 @@
   float: left;
   margin-top: 6px;
   margin-left: 10px;
+  border:none;
+
 }
 
 .new-tweet .counter {

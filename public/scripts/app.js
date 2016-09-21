@@ -3,25 +3,32 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-'use strict';
+/*'use strict';*/
 
 $(document).ready(function() {
 
-  function renderTweets(tweets) {
-    data.forEach(function(item, index) {
-      $(".container").append(createTweetElement(item));
+  function loadTweets() {
+    $.get("/tweets", function(data){
+      success: renderTweets(data)
     });
   }
-
+  // Takes JSON data and calls the function to generate HTML
+  function renderTweets(tweets) {
+    $('#outer-tweet-container').empty();
+    tweets.forEach(function(item) {
+      $("#outer-tweet-container").append(createTweetElement(item));
+    });
+  }
+  // Generate HTML of tweet from JSON data
   function createTweetElement(tweet) {
-    let tweetUsername = tweet.user.name;
-    let avatars = tweet.user.avatars.regular;
-    let handle = tweet.user.handle;
-    let tweetContent = tweet.content.text;
-    let dateTweeted = tweet.created_at;
-    let today = Date.now();
-    let daysAgo = Math.floor((today - dateTweeted)/86400000);
-    let tweetTemplate =`
+    var tweetUsername = tweet.user.name;
+    var avatars = tweet.user.avatars.regular;
+    var handle = tweet.user.handle;
+    var tweetContent = tweet.content.text;
+    var dateTweeted = tweet.created_at;
+    var today = Date.now();
+    var daysAgo = Math.floor((today - dateTweeted)/86400000);
+    var tweetTemplate =`
                 <section class = "tweet-container">
                   <header>
                     <img src="${avatars}">
@@ -43,5 +50,40 @@ $(document).ready(function() {
                 `
     return tweetTemplate;
   }
-  renderTweets(data);
+
+
+
+
+  function validate(event) {
+    event.preventDefault();
+    var count = $(this).children("textarea").val().length;
+    var tweetBody = $(this).children("textarea").serialize();
+    console.log(tweetBody);
+    if(count <= 0 || tweetBody === null){
+      $(".input-error").fadeToggle(800);
+      $(".input-error p").toggle();
+    } else if(count >140) {
+      alert('Exceeds limit of 140 characters');
+    } else {
+      $(this).children("textarea").val('');
+      $.ajax({
+        url: "/tweets",
+        type: "POST",
+        data: tweetBody,
+        success: loadTweets
+      });
+    }
+  }
+
+  $("#toggle-compose").click(function(){
+    $("#toggle-compose").toggleClass("toggle-active");
+    $(".new-tweet").slideToggle("fast");
+    $(".new-tweet textarea").focus();
+  });
+
+  $(".new-tweet form").on("submit", validate);
+
+
+
+  loadTweets();
 });
