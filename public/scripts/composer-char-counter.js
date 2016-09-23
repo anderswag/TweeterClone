@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  function characterCount(){
+$(document).ready(function() {
+  function characterCount() {
     var count = $(this).val().length;
     var counterElement = $(this).siblings('.counter').html(140 - count);
     if(count > 140) {

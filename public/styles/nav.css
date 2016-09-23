@@ -13,13 +13,11 @@
   width:80px;
   float:left;
 }
-
 #nav-bar .header {
   float: left;
   line-height: 73px;
   font-size: 24px;
 }
-
 #toggle-compose {
   display: block;
   width: 135px;
@@ -31,7 +29,6 @@
   padding:0px 5px 0px 13px;
   cursor:pointer;
 }
-
 .toggle-active {
   background-color:white !important;
   color: darkorange;

@@ -7,7 +7,7 @@
 $(document).ready(function() {
 
   function loadTweets() {
-    $.get("/tweets", function(data){
+    $.get("/tweets", function(data) {
       success: renderTweets(data)
     });
   }
@@ -50,12 +50,11 @@ $(document).ready(function() {
     return tweetTemplate;
   }
 
-
   function validate(event) {
     event.preventDefault();
     var count = $(this).children("textarea").val().length;
     var tweetBody = $(this).children("textarea").serialize();
-    if(count <= 0 || tweetBody === null){
+    if(count <= 0 || tweetBody === null) {
       alert('Please write something');
     } else if(count >140) {
       alert('Exceeds limit of 140 characters');
@@ -71,7 +70,7 @@ $(document).ready(function() {
     }
   }
 
-  $("#toggle-compose").click(function(){
+  $("#toggle-compose").click(function() {
     $("#toggle-compose").toggleClass("toggle-active");
     $(".new-tweet").slideToggle("fast");
     $(".new-tweet textarea").focus();
