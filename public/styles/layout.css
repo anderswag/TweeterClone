@@ -130,3 +130,9 @@ textarea {
 .tweet-container:hover .social-buttons {
   visibility:visible;
 }
+.tweet-container:hover {
+  border: black solid 1px;
+}
+.tweet-container i:hover {
+  color:red;
+}

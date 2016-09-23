@@ -3,7 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-/*'use strict';*/
 
 $(document).ready(function() {
 
@@ -52,20 +51,17 @@ $(document).ready(function() {
   }
 
 
-
-
   function validate(event) {
     event.preventDefault();
     var count = $(this).children("textarea").val().length;
     var tweetBody = $(this).children("textarea").serialize();
-    console.log(tweetBody);
     if(count <= 0 || tweetBody === null){
-      $(".input-error").fadeToggle(800);
-      $(".input-error p").toggle();
+      alert('Please write something');
     } else if(count >140) {
       alert('Exceeds limit of 140 characters');
     } else {
       $(this).children("textarea").val('');
+      $(".counter").text("140");
       $.ajax({
         url: "/tweets",
         type: "POST",
@@ -83,7 +79,9 @@ $(document).ready(function() {
 
   $(".new-tweet form").on("submit", validate);
 
-
+  $("#outer-tweet-container").on("click",".tweet-container", function() {
+    alert('tweet tweet');
+  });
 
   loadTweets();
 });
